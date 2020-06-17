@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TakeCommand:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TakeCommand_jar</output-path>
+    <root id="archive" name="TakeCommand.jar">
+      <element id="module-output" name="TakeCommand" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/plugin.yml" />
+    </root>
+  </artifact>
+</component>
