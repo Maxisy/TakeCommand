@@ -1,0 +1,10 @@
+name: TakeCommand
+version: 1.0
+main: me.Maxisy.TakeCommand.TakeCommandPlugin
+commands:
+  take:
+    description: "Command that takes an item from player"
+    usage: /take [item] [amount] [player]
+    permission: take.take
+    permission-message: "You don't have take.take permission!"
+    default: op
