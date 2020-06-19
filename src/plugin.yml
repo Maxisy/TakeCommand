@@ -8,3 +8,9 @@ commands:
     permission: take.take
     permission-message: "You don't have take.take permission!"
     default: op
+  takecommand:
+    description: "Reloads config.yml file"
+    usage: /takecommand [reload]
+    permission: take.reload
+    permission-message: "You don't have take.reload permission!"
+    default: op

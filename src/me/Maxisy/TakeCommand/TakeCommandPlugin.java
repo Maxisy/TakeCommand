@@ -5,14 +5,20 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
 
 public class TakeCommandPlugin extends JavaPlugin {
 
-    String prefixTrue = ChatColor.AQUA + "[" + getConfig().getString("prefix") + "] " + ChatColor.GREEN;
-    String prefixFalse = ChatColor.AQUA + "[" + getConfig().getString("prefix") + "] " + ChatColor.RED;
+    String prefix = ChatColor.AQUA + "[";
+    String prefixTrue;
+    String prefixFalse;
 
     @Override
     public void onEnable() {
@@ -20,6 +26,7 @@ public class TakeCommandPlugin extends JavaPlugin {
         this.getLogger().info(prefixTrue + "Plugin created by Maksymilian Sybicki");
         getConfig().options().copyDefaults(true);
         saveConfig();
+        loadConfig(this);
     }
 
     @Override
@@ -58,6 +65,12 @@ public class TakeCommandPlugin extends JavaPlugin {
                 return false;
             }
         }
+        if (command.getName().equalsIgnoreCase("takecommand")) {
+            if (args[0].equalsIgnoreCase("reload")) {
+                loadConfig(this);
+                sender.sendMessage(prefixTrue + "Successfully reloaded config.yml.");
+            }
+        }
         return true;
     }
 
@@ -73,5 +86,12 @@ public class TakeCommandPlugin extends JavaPlugin {
             }
         }
         return false;
+    }
+
+    public void loadConfig(Plugin plugin) {
+        File cfile = new File(plugin.getDataFolder().getAbsolutePath() + "/config.yml");
+        FileConfiguration config = YamlConfiguration.loadConfiguration(cfile);
+        prefixTrue = prefix + config.getString("prefix") + "]" + ChatColor.GREEN + " ";
+        prefixFalse = prefix + config.getString("prefix") + "]" + ChatColor.RED + " ";
     }
 }
