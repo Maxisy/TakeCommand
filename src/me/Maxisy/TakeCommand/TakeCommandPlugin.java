@@ -51,10 +51,10 @@ public class TakeCommandPlugin extends JavaPlugin {
                             boolean done = removeItem(target, material, Integer.parseInt(args[1]));
                             if (done)
                                 sender.sendMessage(prefixTrue + "Successfully removed " +
-                                        material + " from " + target.getName() + "'s inventory!");
+                                        args[0] + " from " + target.getName() + "'s inventory!");
                             else
                                 sender.sendMessage(prefixFalse + target.getName() + " hasn't got "
-                                        + material + " in their inventory.");
+                                        + args[0] + " in their inventory.");
                         }
                     }
                 } catch (NumberFormatException e) {
