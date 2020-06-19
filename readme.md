@@ -9,3 +9,5 @@ take.take - /take command (it's default to OP);
 take.reload - /takecommand reload command (default to OP).
 
 Configuration: in config.yml you can change prefix.
+
+If you have questions or have a proposition to improve this plugin, write on Spigot page: https://www.spigotmc.org/resources/takecommand.80316/
